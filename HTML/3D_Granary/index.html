@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>我的第一个案例</title>
+    <style>
+      body {
+        margin: 0;
+        overflow: hidden;
+        background-color: aliceblue;
+      }
+    </style>
+    </style>
+  </head>
+  <body>
+    <script type="importmap">
+      {
+        "imports":{
+          "three": "../../lib/three.js-r185/build/three.module.js",
+          "three/addons/": "../../lib/three.js-r185/examples/jsm/"
+        }
+      }
+    </script>
+    <script type="module">
+      import renderer from './renderer.js'
+      document.body.appendChild(renderer.domElement)
+    </script>
+  </body>
+</html>

@@ -1,0 +1,8 @@
+.markdown-body p {
+  text-indent: 2em;
+}
+
+.markdown-body blockquote p,
+.markdown-body pre p {
+  text-indent: 0;
+}
