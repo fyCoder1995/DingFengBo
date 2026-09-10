@@ -1,0 +1,50 @@
+#loading-screen {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  gap: 18px;
+  background: #101820;
+  color: #f4f0e8;
+  height: 100vh;
+  position: fixed;
+  inset: 0;
+  transition:
+    opacity 700ms ease,
+    visibility 700ms ease;
+  z-index: 10;
+}
+
+#loading-screen.is-hidden {
+  pointer-events: none;
+  visibility: hidden;
+}
+
+.loading-mark {
+  animation: pulse 1.4s ease-in-out infinite;
+  border: 2px solid rgba(244, 240, 232, 0.25);
+  border-top-color: #e6a65d;
+  border-radius: 50%;
+  height: 46px;
+  width: 46px;
+}
+
+.loading-title {
+  font: 600 14px/1.2;
+  letter-spacing: 0.18em;
+}
+
+.loading-status {
+  color: #aab4b8;
+  font: 12px/1.2;
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    transform: rotate(0deg) scale(0.92);
+  }
+  50% {
+    transform: rotate(180deg) scale(1);
+  }
+}
