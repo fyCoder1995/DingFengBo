@@ -3,40 +3,28 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>渲染粮仓模型+雾化+标签标注+点击弹窗</title>
-    <link href="./assets/css/global.css" rel="stylesheet" />
-    <link href="./assets/css/loading.css" rel="stylesheet" />
-    <link href="./assets/css/tag.css" rel="stylesheet" />
+    <title>我的第一个案例</title>
+    <style>
+      body {
+        margin: 0;
+        overflow: hidden;
+        background-color: aliceblue;
+      }
+    </style>
+    </style>
   </head>
   <body>
-    <div id="loading-screen" role="status" aria-live="polite">
-      <div class="loading-mark" aria-hidden="true"></div>
-      <div class="loading-title">正在准备场景</div>
-      <div class="loading-status">模型加载中...</div>
-    </div>
-    <div id="messageTag" class="messageTag">
-      <div id="granaryName"></div>
-      <img src="./assets/temp.png" alt="" class="temp" />
-      <div class="tempTextBox"><span id="tempText"></span>℃</div>
-      <div id="grain"></div>
-      <img id="grainImg" src="./assets/bean/b_black.png" alt="" />
-      <div class="weightBox"><span id="weight"></span>t</div>
-      <div class="granaryHeightBox">仓高—<span id="granaryHeight"></span>m</div>
-      <div class="grainHeightBox">粮高—<span id="grainHeight"></span> m</div>
-    </div>
-
     <script type="importmap">
       {
-        "imports": {
+        "imports":{
           "three": "../../lib/three.js-r185/build/three.module.js",
           "three/addons/": "../../lib/three.js-r185/examples/jsm/"
         }
       }
     </script>
     <script type="module">
-      import renderer from "./renderer.js";
-      document.body.appendChild(renderer.domElement);
-      import { onClick, onMouseMove } from "./scene/choose.js";
+      import renderer from './renderer.js'
+      document.body.appendChild(renderer.domElement)
     </script>
   </body>
 </html>
