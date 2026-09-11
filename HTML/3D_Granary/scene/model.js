@@ -6,8 +6,9 @@ import { createFlame } from "./flame.js";
 let model = new THREE.Group();
 let loader = new GLTFLoader();
 let granaryArr = []; //所有粮仓模型对象的集合，用于射线拾取
-
 let P_02Flame = null;
+const loadingStatus = document.querySelector(".loading-status");
+const loadingScreen = document.querySelector("#loading-screen");
 loader.load(
   "./assets/model.glb",
   function (gltf) {
@@ -45,14 +46,23 @@ loader.load(
     model.add(P_02Flame);
 
     TestFalme(gltf);
+    modelReady();
   },
-  modelReady,
+  function (progress) {
+    if (loadingStatus && progress.total) {
+      loadingStatus.textContent = `模型加载中 ${Math.round((progress.loaded / progress.total) * 100)}%`;
+    }
+  },
+  function (error) {
+    if (loadingStatus) {
+      loadingStatus.textContent = "模型加载失败，请检查资源路径";
+    }
+    console.error("模型加载失败", error);
+  },
 );
-// 模型加载前过渡动画
+// 模型加载完淡出动画
 function modelReady() {
-  const loadingScreen = document.querySelector("#loading-screen");
-  const loadingStatus = document.querySelector(".loading-status");
-  try {
+  if (loadingScreen && loadingStatus) {
     loadingStatus.textContent = "场景准备就绪";
     loadingScreen.classList.add("is-hidden");
     loadingScreen.addEventListener(
@@ -60,9 +70,6 @@ function modelReady() {
       () => loadingScreen.remove(),
       { once: true },
     );
-  } catch (error) {
-    loadingStatus.textContent = "无法加载模型";
-    console.log(error);
   }
 }
 
