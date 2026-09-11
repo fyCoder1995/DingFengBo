@@ -50,7 +50,11 @@ loader.load(
   },
   function (progress) {
     if (loadingStatus && progress.total) {
-      loadingStatus.textContent = `模型加载中 ${Math.round((progress.loaded / progress.total) * 100)}%`;
+      let value =
+        Math.round((progress.loaded / progress.total) * 100) >= 100
+          ? 100
+          : Math.round((progress.loaded / progress.total) * 100);
+      loadingStatus.textContent = `模型加载中 ${value}%`;
     }
   },
   function (error) {
