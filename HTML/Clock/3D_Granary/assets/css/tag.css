@@ -20,7 +20,7 @@
   width: 500px;
   height: 400px;
   color: #fff;
-  z-index: 200;
+  z-index: 1200;
   font-size: 16px;
   background: url(../messageBg.png) no-repeat;
   background-size: 400px;

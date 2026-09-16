@@ -77,7 +77,7 @@ function weightAnimation() {
   }, 5);
 }
 
-addEventListener("click", onClick); //鼠标点击事件
+addEventListener("pointerup", onClick); //鼠标点击事件
 addEventListener("mousemove", onMouseMove); //鼠标滑动事件
 
 export { onClick, onMouseMove };

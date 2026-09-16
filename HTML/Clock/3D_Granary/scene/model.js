@@ -108,13 +108,13 @@ function TestFalme(gltf) {
 
   // 假设1秒后Q_05粮仓火灾
   setTimeout(function () {
-    var flame = granaryFlame(gltf, "Q_05");
+    const flame = granaryFlame(gltf, "Q_05");
     model.add(flame);
   }, 1000);
 
   // 假设1秒后L_04粮仓火灾
   setTimeout(function () {
-    var flame = granaryFlame(gltf, "L_04"); //
+    const flame = granaryFlame(gltf, "L_04"); //
     model.add(flame);
   }, 2000);
 }

@@ -40,36 +40,38 @@ const points = [
     element: document.querySelector(".point2"),
   },
   {
-    position: new THREE.Vector3(-108, 84, -140),
+    position: new THREE.Vector3(-108, 84, -138),
     element: document.querySelector(".point3"),
   },
   {
-    position: new THREE.Vector3(30, 41, -140),
+    position: new THREE.Vector3(-80, 46, 145),
     element: document.querySelector(".point4"),
   },
   {
-    position: new THREE.Vector3(-10, 160, -390),
+    position: new THREE.Vector3(-10, 160, -400),
     element: document.querySelector(".point5"),
   },
 ];
-
+const bgm = document.getElementById("bgm");
 document.querySelectorAll(".point").forEach((element) => {
   element.addEventListener(
     "click",
     (event) => {
+      controls.minDistance = 50;
+      bgm.play();
       let className = event.target.classList[event.target.classList.length - 1];
       switch (className) {
-        case "label0":
+        case "label0": // 灯塔
           Animations.animateCamera(
             camera,
             controls,
             { x: -15, y: 80, z: 60 },
             { x: 0, y: 0, z: 0 },
-            1600,
+            3600,
             () => {},
           );
           break;
-        case "label1":
+        case "label1": // 小船
           Animations.animateCamera(
             camera,
             controls,
@@ -79,33 +81,46 @@ document.querySelectorAll(".point").forEach((element) => {
             () => {},
           );
           break;
-        case "label2":
+        case "label2": // 沙滩
           Animations.animateCamera(
             camera,
             controls,
-            { x: -70, y: 4, z: 90 },
+            { x: -80, y: 4, z: 90 },
             { x: 0, y: 0, z: 0 },
             1800,
             () => {},
           );
           break;
-        case "label5":
+        case "label4": // 礁石
           Animations.animateCamera(
             camera,
             controls,
-            { x: 0, y: 80, z: -820 },
+            { x: -130, y: 38, z: 240 },
             { x: 0, y: 0, z: 0 },
-            1800,
+            2800,
             () => {},
           );
           break;
-        default:
+        case "label5": // 彩虹
           Animations.animateCamera(
             camera,
             controls,
-            { x: 0, y: 40, z: 140 },
+              { x: 0, y: 160, z: 0 },
+            { x: 20, y: 160, z: -240 },
+          
+            4000,
+            () => {
+              controls.minDistance = 250;
+            },
+          );
+          break;
+        default: // 飞鸟
+          Animations.animateCamera(
+            camera,
+            controls,
             { x: 0, y: 0, z: 0 },
-            1600,
+            { x: -90, y: 84, z: -140 },
+            2600,
             () => {},
           );
           break;
@@ -114,6 +129,15 @@ document.querySelectorAll(".point").forEach((element) => {
     false,
   );
 });
+
+renderer.domElement.addEventListener("pointerdown", (event) => {
+  const isPoint = event.target.closest(".point");
+  if (!isPoint) {
+    bgm.pause();
+    bgm.currentTime = 0;
+  }
+});
+
 
 function render() {
   requestAnimationFrame(render);
@@ -183,12 +207,11 @@ scene.environment = pmremGenerator.fromScene(sky).texture;
 
 async function init() {
   const result = await initModel();
-  console.log(result);
   if (result) {
     Animations.animateCamera(
       camera,
       controls,
-      { x: -38, y: 6, z: 160 },
+      { x: 0, y: 41, z: 300 },
       { x: 0, y: 0, z: 0 },
       4000,
       () => {
@@ -197,6 +220,6 @@ async function init() {
     );
   }
 }
-init()
+init();
 
 export default renderer;

@@ -14,8 +14,8 @@ function messageTag(domId) {
 let massageBoxRenderer = new CSS2DRenderer();
 massageBoxRenderer.setSize(window.innerWidth, window.innerHeight);
 massageBoxRenderer.domElement.style.position = "absolute";
-massageBoxRenderer.domElement.style.top = "200px";
-massageBoxRenderer.domElement.style.left = "250px";
+massageBoxRenderer.domElement.style.top = "0px";
+massageBoxRenderer.domElement.style.left = "0px";
 massageBoxRenderer.domElement.style.pointerEvents = "none";
 document.body.appendChild(massageBoxRenderer.domElement);
 
