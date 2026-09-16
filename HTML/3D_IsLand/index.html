@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>3D小岛</title>
+    <link rel="stylesheet" href="./assets/css/global.css" />
+    <link rel="stylesheet" href="./assets/css/tag.css" />
+    <link href="./assets/css/loading.css" rel="stylesheet" />
+  </head>
+  <body>
+    <div id="loading-screen" role="status" aria-live="polite">
+      <div class="loading-mark" aria-hidden="true"></div>
+      <div class="loading-title">正在准备场景</div>
+      <div class="loading-status"></div>
+    </div>
+    <div id="pointBox">
+      <div class="point point0">
+        <div class="label label0">1</div>
+        <div class="text">灯塔：我是灯塔，为远行的船舶指引方向。</div>
+      </div>
+      <div class="point point1">
+        <div class="label label1">2</div>
+        <div class="text">小船：我是小船，等待着某一天驶向远方。</div>
+      </div>
+      <div class="point point2">
+        <div class="label label2">3</div>
+        <div class="text">沙滩：我是沙滩，每一粒沙都是我对大海的情书。</div>
+      </div>
+      <div class="point point3">
+        <div class="label label3">4</div>
+        <div class="text">
+          飞鸟：我是飞鸟，最爱翱翔在大海上，有时也会在小岛停留。
+        </div>
+      </div>
+      <div class="point point4">
+        <div class="label label4">5</div>
+        <div class="text">
+          礁石：我是礁石，总是默默的护卫着小岛，抵御不善的入侵者。
+        </div>
+      </div>
+      <div class="point point5">
+        <div class="label label5">6</div>
+        <div class="text">彩虹：我是彩虹，往往在雨后的阳光中出现。</div>
+      </div>
+    </div>
+    <audio id="bgm" loop preload="auto" loop src="http://59.110.44.158/files/rainbow.mp3"></audio>
+
+    <script type="importmap">
+      {
+        "imports": {
+          "three": "../../lib/three.js-r185/build/three.module.js",
+          "three/addons/": "../../lib/three.js-r185/examples/jsm/"
+        }
+      }
+    </script>
+    <script type="module">
+      import renderer from "./renderer.js";
+      document.body.appendChild(renderer.domElement);
+    </script>
+  </body>
+</html>
